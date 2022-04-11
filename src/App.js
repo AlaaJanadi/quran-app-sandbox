@@ -15,7 +15,8 @@ export default function App() {
   };
 
   const [quranAEditions, setQuranAEditions] = React.useState([]);
-  let [quranSelectedEdition, setQuranSelectedEdition] = React.useState("");
+  let [quranSelectedEdition, setQuranSelectedEdition] = React.useState("quran-simple");
+  const [page, setPage] = React.useState(604);
 
   function quranSelectedEditionHandler(e) {
     console.log(e.target.value);
@@ -30,7 +31,6 @@ export default function App() {
       .then((res) => {
         setQuranAEditions(
           res.data.data.map((item) => {
-            console.log(item.identifier);
             if (
               item.identifier.includes("simple") ||
               item.identifier.includes("uthmani")
@@ -49,8 +49,12 @@ export default function App() {
             }
           })
         );
+
+
       })
       .catch((err) => console.log(err));
+
+
   });
 
   return (
@@ -63,7 +67,7 @@ export default function App() {
         quranSelectedEdition={quranSelectedEdition}
         quranSelectedEditionHandler={quranSelectedEditionHandler}
       />
-      <Page />
+      <Page pageNum={page} edition={quranSelectedEdition} />
     </div>
   );
 }
