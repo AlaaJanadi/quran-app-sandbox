@@ -3,8 +3,7 @@ import "./styles.css";
 
 import Header from "./components/Header";
 import Menu from "./components/Menu";
-import Page form "./components/Page";
-
+import Page from "./components/Page";
 import MenuItem from "@mui/material/MenuItem";
 import axios from "axios";
 
@@ -64,7 +63,7 @@ export default function App() {
         quranSelectedEdition={quranSelectedEdition}
         quranSelectedEditionHandler={quranSelectedEditionHandler}
       />
-      <Page/>
+      <Page />
     </div>
   );
 }
