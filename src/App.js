@@ -30,22 +30,22 @@ export default function App() {
         setQuranAEditions(
           res.data.data.map((item) => {
             console.log(item.identifier);
-            // if (
-            //   item.identifier.contains("simple") ||
-            //   item.identifier.contains("uthmani")
-            // ) {
-            //   return (
-            //     <MenuItem
-            //       dir="rtl"
-            //       key={item.identifier}
-            //       value={item.identifier}
-            //     >
-            //       {item.name}
-            //     </MenuItem>
-            //   );
-            // } else {
-            //   return "";
-            // }
+            if (
+              item.identifier.includes("simple") ||
+              item.identifier.includes("uthmani")
+            ) {
+              return (
+                <MenuItem
+                  dir="rtl"
+                  key={item.identifier}
+                  value={item.identifier}
+                >
+                  {item.name}
+                </MenuItem>
+              );
+            } else {
+              return "";
+            }
           })
         );
       })
