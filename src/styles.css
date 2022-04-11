@@ -1,3 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
   font-family: sans-serif;
+}
+
+.AppBar {
+  background-color: #78c0e2;
+  padding: 10px;
+}
+.logoImg {
+  margin: 5px 10px 5px auto;
+  width: 120px;
+}
+.icons {
+  color: #012537;
 }
