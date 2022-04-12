@@ -11,7 +11,7 @@ export default function Menu(props) {
   return (
     <SwipeableDrawer
       PaperProps={{
-        sx: { width: "25%" }
+        sx: { width: "30%" }
       }}
       dir="rtl"
       anchor="left"

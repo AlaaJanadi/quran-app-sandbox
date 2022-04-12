@@ -1,16 +1,16 @@
 import React from "react";
 import "./styles.css";
-
-import Header from "./components/Header";
-import Menu from "./components/Menu";
-import Page from "./components/Page";
 import MenuItem from "@mui/material/MenuItem";
 import axios from "axios";
 
+import Header from "./components/Header";
+import Menu from "./components/Menu";
+import MainArea from "./components/MainArea";
+
 export default function App() {
+
   let [menuState, setMenuState] = React.useState(false);
-  console.log(menuState);
-  const toggleMenu = (state) => {
+  function toggleMenu(state) {
     setMenuState(state);
   };
 
@@ -19,7 +19,6 @@ export default function App() {
   const [page, setPage] = React.useState(604);
 
   function quranSelectedEditionHandler(e) {
-    console.log(e.target.value);
     setQuranSelectedEdition(e.target.value);
   }
 
@@ -30,7 +29,7 @@ export default function App() {
       )
       .then((res) => {
         setQuranAEditions(
-          res.data.data.map((item) => {
+          res.data.data.map((item, index) => {
             if (
               item.identifier.includes("simple") ||
               item.identifier.includes("uthmani")
@@ -41,7 +40,7 @@ export default function App() {
                   key={item.identifier}
                   value={item.identifier}
                 >
-                  {item.name}
+                  {index == 12 ? 6 : index} - {item.name}
                 </MenuItem>
               );
             } else {
@@ -55,7 +54,7 @@ export default function App() {
       .catch((err) => console.log(err));
 
 
-  });
+  }, []);
 
   return (
     <div className="App">
@@ -67,7 +66,7 @@ export default function App() {
         quranSelectedEdition={quranSelectedEdition}
         quranSelectedEditionHandler={quranSelectedEditionHandler}
       />
-      <Page pageNum={page} edition={quranSelectedEdition} />
+      <MainArea />
     </div>
   );
 }
